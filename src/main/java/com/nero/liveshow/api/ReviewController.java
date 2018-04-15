@@ -31,28 +31,14 @@ public class ReviewController {
     }
 
 
-    @RequestMapping("/update")
-    public HttpMsg update(@RequestParam(value = "id") Long id, @RequestParam(value = "name") String name, @RequestParam(value = "priority") Integer priorit, @RequestParam(value = "cover") String cover) {
-        Room room = roomRepository.getOne(id);
-        if (room == null) {
-            return new HttpMsg(false, "找不到当前id的房间信息");
-        }
-        room.setName(name);
-        room.setPriority(priorit);
-        room.setCover(cover);
-        roomRepository.save(room);
-        return new HttpMsg();
-    }
-
-
     @RequestMapping("/list")
-    public Page<Room> list(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
-        return roomRepository.findAll(PageRequest.of(pageNum, pageSize));
+    public Page<Review> list(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
+        return reviewRepository.findAll(PageRequest.of(pageNum, pageSize));
     }
 
     @RequestMapping("/detail")
-    public Room detail(@RequestParam(value = "id") Long id) {
-        return roomRepository.getOne(id);
+    public Review detail(@RequestParam(value = "id") Long id) {
+        return reviewRepository.getOne(id);
     }
 
 

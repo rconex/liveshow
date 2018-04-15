@@ -9,5 +9,5 @@ import java.util.List;
 
 public interface ReviewRepository extends JpaRepository<Review, Long> {
 
-     List<Room> findByType(int type, Pageable pageable);
+//     List<Room> findByType(int type, Pageable pageable);
 }
