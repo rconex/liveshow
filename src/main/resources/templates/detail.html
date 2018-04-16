@@ -21,20 +21,21 @@
         <!--<div id="id_video_container" style="width:100%; height:auto;"></div>-->
         <!--<script src="js/live_connect.js" charset="utf-8"></script>-->
         <!--<script type="text/javascript">-->
-            <!--(function () {-->
-                <!--var player = new TcPlayer('id_test_video', {-->
-                    <!--"m3u8": "http://22456.liveplay.myqcloud.com/live/22456_2da70b9227.m3u8", //请替换成实际可用的播放地址-->
-                    <!--"autoplay" : true,      //iOS下safari浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的-->
-                    <!--"coverpic" : "http://www.test.com/myimage.jpg",-->
-                    <!--"width" :  '480',//视频的显示宽度，请尽量使用视频分辨率宽度-->
-                    <!--"height" : '320'//视频的显示高度，请尽量使用视频分辨率高度-->
-                <!--});-->
-            <!--})()-->
+        <!--(function () {-->
+        <!--var player = new TcPlayer('id_test_video', {-->
+        <!--"m3u8": "http://22456.liveplay.myqcloud.com/live/22456_2da70b9227.m3u8", //请替换成实际可用的播放地址-->
+        <!--"autoplay" : true,      //iOS下safari浏览器，以及大部分移动端浏览器是不开放视频自动播放这个能力的-->
+        <!--"coverpic" : "http://www.test.com/myimage.jpg",-->
+        <!--"width" :  '480',//视频的显示宽度，请尽量使用视频分辨率宽度-->
+        <!--"height" : '320'//视频的显示高度，请尽量使用视频分辨率高度-->
+        <!--});-->
+        <!--})()-->
         <!--</script>-->
-        <video  autoplay="autoplay"
-                x-webkit-airplay="true"
-                preload="auto" playsinline="true"
-                x5-video-player-typ="h5" src="http://22456.liveplay.myqcloud.com/live/22456_2da70b9227.m3u8" webkit-playsinline></video>
+        <video autoplay="autoplay"
+               x-webkit-airplay="true"
+               preload="auto" playsinline="true"
+               x5-video-player-typ="h5" src="http://22456.liveplay.myqcloud.com/live/22456_2da70b9227.m3u8"
+               webkit-playsinline></video>
         <!--下列图片可删除，在此做视频示意-->
         <!--<img src="img/back-img2.png" width="100%" height="100%">-->
     </div>
@@ -51,8 +52,8 @@
                     <div class="user-info-text">
                         <div class="user-info-name">美女主播朴信惠</div>
                         <div class="user-info-num">
-                            <i class="user-icon-fans"></i><span id="user-icon-fans">0</span>
-                            <i class="user-icon-like"></i><span id="user-icon-like">0</span>
+                            <i class="user-icon-fans"></i><span id="user-icon-fans">5</span>
+                            <i class="user-icon-like"></i><span id="user-icon-like">5</span>
                         </div>
                     </div>
                 </div>
@@ -126,7 +127,7 @@
         <button type="button" class="" onclick="colseLogin()">
             关闭
         </button>
-            <button type="button" class="" onclick="independentModeLogin()">
+        <button type="button" class="" onclick="independentModeLogin()">
             确定
         </button>
     </div>
@@ -144,14 +145,14 @@
 
 <script type="text/javascript">
 
-       //帐号模式，0-表示独立模式，1-表示托管模式
+    //帐号模式，0-表示独立模式，1-表示托管模式
     var accountMode = 0;
 
     //官方 demo appid,需要开发者自己修改（托管模式）
     var sdkAppID = 1400082990;
     var accountType = 25223;
 
-    var avChatRoomId = '@TGS#1HBQJBFFR';  //默认房间群ID，群类型必须是直播聊天室（AVChatRoom），这个为官方测试ID(托管模式)
+    var avChatRoomId = '@TGS#aVFS7FFFI';  //默认房间群ID，群类型必须是直播聊天室（AVChatRoom），这个为官方测试ID(托管模式)
 
     if (webim.Tool.getQueryString("groupid")) {
         avChatRoomId = webim.Tool.getQueryString("groupid");//用户自定义房间群id
@@ -170,9 +171,9 @@
         'sdkAppID': sdkAppID, //用户所属应用id,必填
         'appIDAt3rd': sdkAppID, //用户所属应用id，必填
         'accountType': accountType, //用户所属应用帐号类型，必填
-        'identifier': null, //当前用户ID,必须是否字符串类型，选填
+        'identifier': "[[${identifier}]]", //当前用户ID,必须是否字符串类型，选填
         'identifierNick': "null", //当前用户昵称，选填
-        'userSig': null, //当前用户身份凭证，必须是字符串类型，选填
+        'userSig': "[[${userSig}]]", //当前用户身份凭证，必须是字符串类型，选填
         'headurl': 'img/2016.gif'//当前用户默认头像，选填
     };
     //监听（多终端同步）群系统消息方法，方法都定义在demo_group_notice.js文件中
@@ -251,14 +252,14 @@
             sdkLogin();
         }
     } else {//独立模式
-        $('#login_dialog').show();
-        //sdkLogin();
+//        $('#login_dialog').show();
+        sdkLogin();
     }
-    if(/debug/gi.test(location.hash)){
-        document.write('<script src="http://sdklog.isd.com/js/vconsole.min.js"></scr'+'ipt>');
+    if (/debug/gi.test(location.hash)) {
+        document.write('<script src="http://sdklog.isd.com/js/vconsole.min.js"></scr' + 'ipt>');
     }
 
-    function colseLogin(){
+    function colseLogin() {
         $('#login_dialog').hide();
     }
 </script>
