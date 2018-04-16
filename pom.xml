@@ -58,6 +58,43 @@
 			<artifactId>qcloud-java-sdk</artifactId>
 			<version>2.0.1</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcpkix-jdk15on -->
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcpkix-jdk15on</artifactId>
+			<version>1.52</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/org.json/json -->
+		<dependency>
+			<groupId>org.json</groupId>
+			<artifactId>json</artifactId>
+			<version>20171018</version>
+		</dependency>
+
+		<!-- https://mvnrepository.com/artifact/commons-codec/commons-codec -->
+		<dependency>
+			<groupId>commons-codec</groupId>
+			<artifactId>commons-codec</artifactId>
+			<version>1.10</version>
+		</dependency>
+
+
+		<!-- https://mvnrepository.com/artifact/org.bouncycastle/bcprov-jdk15on -->
+		<dependency>
+			<groupId>org.bouncycastle</groupId>
+			<artifactId>bcprov-jdk15on</artifactId>
+			<version>1.52</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.nero</groupId>
+			<artifactId>tls_sig_api</artifactId>
+			<version>0.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/tls_sig_api.jar</systemPath>
+		</dependency>
 	</dependencies>
 
 	<build>
