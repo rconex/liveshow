@@ -8,6 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -17,6 +18,7 @@ public class FocusController {
     @Autowired
     private FocusRepository focusRepository;
 
+    @ResponseBody
     @RequestMapping("/add")
     public HttpMsg add(@RequestParam(value = "imgUrl") String imgUrl,@RequestParam(value = "redirectUrl") String redirectUrl) {
         Focus focus = new Focus();
@@ -27,7 +29,7 @@ public class FocusController {
         return new HttpMsg();
     }
 
-
+    @ResponseBody
     @RequestMapping("/update")
     public HttpMsg update(@RequestParam(value = "id") Long id, @RequestParam(value = "imgUrl") String imgUrl,@RequestParam(value = "redirectUrl") String redirectUrl) {
         Focus focus = focusRepository.getOne(id);
@@ -41,12 +43,13 @@ public class FocusController {
         return new HttpMsg();
     }
 
-
+    @ResponseBody
     @RequestMapping("/list")
     public Page<Focus> list(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
         return focusRepository.findAll(PageRequest.of(pageNum, pageSize));
     }
 
+    @ResponseBody
     @RequestMapping("/detail")
     public Focus detail(@RequestParam(value = "id") Long id) {
         return focusRepository.getOne(id);

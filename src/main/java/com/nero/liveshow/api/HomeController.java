@@ -16,7 +16,7 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("detail")
+    @GetMapping("/detail")
     public String detail(Model model) {
         try {
             String testName = UUID.randomUUID().toString().replaceAll("\\-", "").substring(0, 8);

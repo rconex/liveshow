@@ -8,5 +8,5 @@ import java.util.List;
 
 public interface RoomRepository extends JpaRepository<Room, Long> {
 
-     List<Room> findByType(int type, Pageable pageable);
+     List<Room> findByType(Pageable pageable);
 }

@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -18,6 +19,7 @@ public class RoomController {
     @Autowired
     private RoomRepository roomRepository;
 
+    @ResponseBody
     @RequestMapping("/add")
     public HttpMsg add(@RequestParam(value = "name") String name, @RequestParam(value = "priority") Integer priorit, @RequestParam(value = "cover") String cover) {
         Room room = new Room();
@@ -30,7 +32,7 @@ public class RoomController {
         return new HttpMsg();
     }
 
-
+    @ResponseBody
     @RequestMapping("/update")
     public HttpMsg update(@RequestParam(value = "id") Long id, @RequestParam(value = "name") String name, @RequestParam(value = "priority") Integer priorit, @RequestParam(value = "cover") String cover) {
         Room room = roomRepository.getOne(id);
@@ -44,12 +46,13 @@ public class RoomController {
         return new HttpMsg();
     }
 
-
+    @ResponseBody
     @RequestMapping("/list")
     public Page<Room> list(@RequestParam(value = "pageNum") Integer pageNum, @RequestParam(value = "pageSize") Integer pageSize) {
         return roomRepository.findAll(PageRequest.of(pageNum, pageSize));
     }
 
+    @ResponseBody
     @RequestMapping("/detail")
     public Room detail(@RequestParam(value = "id") Long id) {
         return roomRepository.getOne(id);
